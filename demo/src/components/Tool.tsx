@@ -66,6 +66,7 @@ const Tool: React.FC<ToolProps> = ({ handleMouseMove }: ToolProps) => {
 
   useEffect(() => {
     if (maskCanvas && maskCanvasRef.current) {
+      console.log("image.src", image?.src);
       const canvas = maskCanvasRef.current;
       const ctx = canvas.getContext("2d");
       canvas.width = maskCanvas.width;
