@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#" class="w-full h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Segment Anything Demo</title>
+
+    <!--  Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Segment Anything Demo" />
+  </head>
+  <body class="w-full h-full">
+    <div id="root" class="w-full h-full"></div>
+
+    <!-- <script type="module">
+      import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js';
+      import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js';
+  
+  
+      let scene, camera, renderer, sphereMesh, interactionMesh, texture;
+      let manualControl = false;
+      let longitude = 0;
+      let latitude = 0;
+      let savedX, savedY, savedLongitude, savedLatitude;
+      let mouse = new THREE.Vector2(), raycaster = new THREE.Raycaster();
+  
+      function init() {
+        scene = new THREE.Scene();
+  
+        // Camera setup
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
+        camera.position.set(0, 0, 0);
+  
+        // Renderer setup
+        renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+  
+        // Create sphere geometry
+        const sphereGeometry = new THREE.SphereGeometry(500, 60, 40);
+        sphereGeometry.scale(-0.6, 0.6, 0.6);
+  
+        // Load texture
+        const textureLoader = new THREE.TextureLoader();
+        texture = textureLoader.load('assets/data/room.jpg', () => {
+          // Create sphere material after texture has loaded
+          const sphereMaterial = new THREE.MeshBasicMaterial({ map: texture });
+          sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial);
+          scene.add(sphereMesh);
+        });
+  
+        // Create sphere material
+        const sphereMaterial = new THREE.MeshBasicMaterial({ map: texture });
+  
+        // Create mesh
+        sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial);
+        console.log(sphereMesh);
+        scene.add(sphereMesh);
+  
+        // Add event listeners
+        document.addEventListener("mousedown", onDocumentMouseDown, false);
+        document.addEventListener("mousemove", onDocumentMouseMove, false);
+        document.addEventListener("mouseup", onDocumentMouseUp, false);
+        window.addEventListener("resize", onWindowResize, false);
+        document.addEventListener("dblclick", onDocumentClick, false);
+  
+        render();
+      }
+  
+      function render() {
+        requestAnimationFrame(render);
+  
+        // if (!manualControl) {
+        //   longitude += 0.1;
+        // }
+  
+        latitude = Math.max(-85, Math.min(85, latitude));
+  
+        camera.target = new THREE.Vector3(
+          500 * Math.sin(THREE.Math.degToRad(90 - latitude)) * Math.cos(THREE.Math.degToRad(longitude)),
+          500 * Math.cos(THREE.Math.degToRad(90 - latitude)),
+          500 * Math.sin(THREE.Math.degToRad(90 - latitude)) * Math.sin(THREE.Math.degToRad(longitude))
+        );
+        camera.lookAt(camera.target);
+  
+        renderer.render(scene, camera);
+      }
+  
+      // Event handlers
+      function onDocumentMouseDown(event) {
+        event.preventDefault();
+        manualControl = true;
+        savedX = event.clientX;
+        savedY = event.clientY;
+        savedLongitude = longitude;
+        savedLatitude = latitude;
+      }
+  
+      function onDocumentMouseMove(event) {
+  if (manualControl) {
+          longitude = (savedX - event.clientX) * 0.1 + savedLongitude;
+          latitude = (event.clientY - savedY) * 0.1 + savedLatitude;
+        }
+      }
+  
+      function onDocumentMouseUp() {
+        manualControl = false;
+  
+      }
+  
+      function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      }
+  
+      function onDocumentClick(event) {
+        event.preventDefault();
+  
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  
+        // Update the raycaster with the camera and mouse position
+        raycaster.setFromCamera(mouse, camera);
+  
+        // Calculate objects intersecting the ray
+        const intersects = raycaster.intersectObject(sphereMesh);
+  
+        if (intersects.length > 0) {
+          const intersect = intersects[0];
+          const uv = intersect.uv;
+  
+          // Map the UV coordinates to the texture coordinates
+          const x = Math.floor(uv.x * texture.image.width);
+          const y = Math.floor(uv.y * texture.image.height);
+  
+          // Modify the texture
+          const canvas = document.createElement('canvas');
+          canvas.width = texture.image.width;
+          canvas.height = texture.image.height;
+          const context = canvas.getContext('2d');
+          context.drawImage(texture.image, 0, 0);
+  
+          // Change color of the clicked area
+          context.fillStyle = "rgba(255, 0, 0, 0.5)"; // Semi-transparent red
+          context.fillRect(x - 10, y - 10, 20, 20); // Draw a small rectangle
+  
+          // Update the texture with the new image
+          texture.image.src = canvas.toDataURL();
+          texture.needsUpdate = true;
+        }
+      }
+  
+      // Initialize the scene
+      init();
+    </script> -->
+
+  </body>
+</html>
